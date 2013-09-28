@@ -1,0 +1,12 @@
+name: GitPull
+main: io.yukon.gitpull.GitPull
+version: ${project.version}
+author: YukonAppleGeek
+
+permissions:
+  gitpull.reload:
+      description: Allows reloading of config
+      default: op
+  gitpull.pull:
+      description: Allows pulling of git repo
+      default: op
