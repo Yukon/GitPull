@@ -87,7 +87,6 @@ public class GitPull extends JavaPlugin {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(repo.getDirectory().getPath());
     }
 
     public Repository getRepo() {
