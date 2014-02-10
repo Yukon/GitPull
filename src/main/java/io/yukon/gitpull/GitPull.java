@@ -15,6 +15,8 @@ public class GitPull extends JavaPlugin {
     public static GitPull inst;
     private CommandsManager<CommandSender> commands;
     private Repository repo;
+    public boolean reloadfailed;
+    public String reloaderror;
 
     public static GitPull get() {
         return inst;
@@ -76,6 +78,8 @@ public class GitPull extends JavaPlugin {
 
     @Override
     public void reloadConfig() {
+        reloadfailed = false;
+        reloaderror = "";
         super.reloadConfig();
 
         try {
@@ -86,6 +90,8 @@ public class GitPull extends JavaPlugin {
 
         } catch (Exception e) {
             e.printStackTrace();
+            reloadfailed = true;
+            reloaderror = e.getCause().getMessage();
         }
     }
 

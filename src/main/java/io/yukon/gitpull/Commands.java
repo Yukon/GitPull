@@ -19,7 +19,11 @@ public class Commands {
     @CommandPermissions("gitpull.reload")
     public static void reload(CommandContext args, CommandSender sender) throws CommandException {
         GitPull.get().reloadConfig();
-        sender.sendMessage(ChatColor.GREEN + "Config reloaded");
+        if (GitPull.get().reloadfailed) {
+            throw new CommandException("Could not reload config.\n" + GitPull.get().reloaderror);
+        } else {
+            sender.sendMessage(ChatColor.GREEN + "Config reloaded");
+        }
     }
 
     @Command(
